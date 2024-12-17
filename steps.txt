@@ -1,0 +1,5 @@
+1. created application
+2. clerk for signin and signup , create application on clerk  and add keys in env and make middleware.ts
+    wrap layout.tsx with clerkprovider
+3. made (clerk) folder for signin and signup and updated env variables and layout.ts for css
+
