@@ -4,3 +4,14 @@
 3. made (clerk) folder for signin and signup and updated env variables and layout.ts for css
 
 4. navbar creation using shadcn components and container for css
+
+5. socketio
+    server.js in root folder code from sockertio documentation(https://socket.io/how-to/use-with-nextjs)
+    caution
+    You won't be able to deploy your application on Vercel, as it does not support WebSocket connection
+    make change in package.json next dex  to  node server.js and "start": "NODE_ENV=production node server.js",
+    and "type": "module"
+    npm i -D nodemon for auto refresh  in package.json "nodemon": "nodemon server.js",
+
+    context folder in root
+    providers folder in root 
