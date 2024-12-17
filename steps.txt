@@ -3,3 +3,4 @@
     wrap layout.tsx with clerkprovider
 3. made (clerk) folder for signin and signup and updated env variables and layout.ts for css
 
+4. navbar creation using shadcn components and container for css
