@@ -15,3 +15,7 @@
 
     context folder in root
     providers folder in root 
+
+
+    client setup
+    npm i socket.io-client
