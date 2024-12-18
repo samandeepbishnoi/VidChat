@@ -1,10 +1,11 @@
+import { SocketUser } from "@/types";
 import { useUser } from "@clerk/nextjs";
 import { createContext, useContext, useState, useEffect } from "react";
 import { io, Socket } from "socket.io-client";
 
 // Define the SocketContext Interface
 interface ISocketContext {
-  socket: Socket | null;
+  onlineUsers: SocketUser [] | null;
   isSocketConnected: boolean;
 }
 
@@ -19,8 +20,10 @@ export const SocketContextProvider = ({
   const {user} = useUser();
   const [socket, setSocket] = useState<Socket | null>(null);
   const [isSocketConnected, setIsSocketConnected] = useState(false);
+  const [onlineUsers, setOnlineUSer] = useState<SocketUser [] | null>(null)
 
 //   console.log("Socket Connection Status:", isSocketConnected, socket);
+console.log('onlineUsers:', onlineUsers)
 
   
   // Initialize socket connection
@@ -56,9 +59,26 @@ export const SocketContextProvider = ({
     };
   }, [socket]);
 
+  //set online users
+  useEffect(() => {
+    if(!socket || !isSocketConnected ) return;
+
+    socket.emit("addNewUser" , user);
+    socket.on('getUsers', (res) => {
+      setOnlineUSer(res);
+    })
+
+    return ()=>{
+      socket.off('getUsers', (res) => {
+      setOnlineUSer(res);
+    })
+  }
+  },[socket , isSocketConnected ,user]);
+
+
   // Pass socket and connection status to context
   return (
-    <SocketContext.Provider value={{ socket, isSocketConnected }}>
+    <SocketContext.Provider value={{ onlineUsers, isSocketConnected }}>
       {children}
     </SocketContext.Provider>
   );

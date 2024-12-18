@@ -19,3 +19,7 @@
 
     client setup
     npm i socket.io-client
+
+6. setup online users and ui
+    for showing imnage in ui there are sone changes to be made in next.config.ts which are new as domains is depricated
+    and also write unoptimized in avatar(To confirm that the issue lies in image optimization, you can use the unoptimized property of the next/image component)
