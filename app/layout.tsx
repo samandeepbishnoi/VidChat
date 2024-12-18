@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import NavBar from "@/components/layout/NavBar";
 import Container from "@/components/layout/Container";
 import SocketProvider from "@/providers/SocketProvider";
+import Footer from "@/components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
             <main className="flex flex-col min-h-screen bg-secondary">
               <NavBar></NavBar>
               <Container>{children}</Container>
+              <Footer/>
             </main>
           </SocketProvider>
         </body>

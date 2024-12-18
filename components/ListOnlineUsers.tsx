@@ -6,14 +6,25 @@ import React from 'react'
 import Avatar from './Avatar'
 
 const ListOnlineUsers = () => {
-  const { user } = useUser()
+  const { user } = useUser()  // Retrieve the authenticated user
   const { onlineUsers } = useSocket()
+
+  // If there is no user (not signed in), return a message with center alignment and border
+  if (!user) {
+    return (
+      <div className='flex justify-center items-center w-full pb-2 border-b border-b-primary/10'>
+        <div className='text-center text-gray-500 text-sm'>
+          Please sign in to see online users
+        </div>
+      </div>
+    )
+  }
 
   // Filter out the current user from the online users list
   const otherOnlineUsers = onlineUsers?.filter(onlineUser => onlineUser.profile.id !== user?.id)
 
   return (
-    <div className='flex flex-col gap-4 items-center justify-center border-b border-b-primary/10 w-full pb-2'>
+    <div className='flex flex-row gap-4 items-center justify-center border-b border-b-primary/10 w-full pb-2'>
       {otherOnlineUsers && otherOnlineUsers.length > 0 ? (
         otherOnlineUsers.map(onlineUser => (
           <div key={onlineUser.userId} className='flex flex-col items-center gap-1 cursor-pointer'>
