@@ -1,6 +1,8 @@
 1. created application
+
 2. clerk for signin and signup , create application on clerk  and add keys in env and make middleware.ts
     wrap layout.tsx with clerkprovider
+
 3. made (clerk) folder for signin and signup and updated env variables and layout.ts for css
 
 4. navbar creation using shadcn components and container for css
@@ -23,3 +25,7 @@
 6. setup online users and ui
     for showing imnage in ui there are sone changes to be made in next.config.ts which are new as domains is depricated
     and also write unoptimized in avatar(To confirm that the issue lies in image optimization, you can use the unoptimized property of the next/image component)
+
+7. setup footer and header
+
+8. 

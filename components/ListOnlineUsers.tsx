@@ -7,7 +7,7 @@ import Avatar from './Avatar'
 
 const ListOnlineUsers = () => {
   const { user } = useUser()  // Retrieve the authenticated user
-  const { onlineUsers } = useSocket()
+  const { onlineUsers , handleCall } = useSocket()
 
   // If there is no user (not signed in), return a message with center alignment and border
   if (!user) {
@@ -27,7 +27,7 @@ const ListOnlineUsers = () => {
     <div className='flex flex-row gap-4 items-center justify-center border-b border-b-primary/10 w-full pb-2'>
       {otherOnlineUsers && otherOnlineUsers.length > 0 ? (
         otherOnlineUsers.map(onlineUser => (
-          <div key={onlineUser.userId} className='flex flex-col items-center gap-1 cursor-pointer'>
+          <div key={onlineUser.userId} onClick={()=>handleCall(onlineUser)} className='flex flex-col items-center gap-1 cursor-pointer'>
             <Avatar src={onlineUser.profile.imageUrl} />
             <div className='text-sm'>{onlineUser.profile.fullName?.split(' ')[0]}</div>
           </div>
