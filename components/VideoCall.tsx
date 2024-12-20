@@ -2,11 +2,18 @@
 import { useSocket } from "@/context/SocketContext";
 import React, { useCallback, useEffect, useState } from "react";
 import VideoContainer from "./VideoContainer";
-import { MdMic, MdMicOff, MdVideocam, MdVideocamOff, MdCallEnd } from "react-icons/md";
+import {
+  MdMic,
+  MdMicOff,
+  MdVideocam,
+  MdVideocamOff,
+  MdCallEnd,
+} from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 
 const VideoCall = () => {
-  const { localStream, peer, isCallEnded, ongoingCall, handleHangup } = useSocket();
+  const { localStream, peer, isCallEnded, ongoingCall, handleHangup } =
+    useSocket();
   const [isMicOn, setIsMicOn] = useState(true);
   const [isVidOn, setIsVidOn] = useState(true);
 
@@ -37,7 +44,6 @@ const VideoCall = () => {
 
   const isOnCall = localStream && peer && ongoingCall ? true : false;
 
-
   // Handle tab close or refresh
   useEffect(() => {
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
@@ -58,10 +64,12 @@ const VideoCall = () => {
     };
   }, [isOnCall, ongoingCall, handleHangup]);
 
-
-
   if (isCallEnded) {
-    return <div className="mt-5 text-rose-500 text-center text-lg font-semibold">Call Ended</div>;
+    return (
+      <div className="mt-5 text-rose-500 text-center text-lg font-semibold">
+        Call Ended
+      </div>
+    );
   }
 
   if (!localStream && !peer) return null;
@@ -71,7 +79,7 @@ const VideoCall = () => {
       className="absolute inset-0 bg-slate-200 bg-opacity-70 flex flex-col items-center justify-center z-50"
       aria-labelledby="incoming-call-title"
     >
-    {/* <div className="flex flex-col items-center justify-center bg-slate-100"> */}
+      {/* <div className="flex flex-col items-center justify-center bg-slate-100"> */}
       <div className="m-4">
         {localStream && (
           <VideoContainer
@@ -99,7 +107,10 @@ const VideoCall = () => {
         >
           {isMicOn ? <MdMic size={28} /> : <MdMicOff size={28} />}
         </button>
-        <Tooltip id="mic-control" content={isMicOn ? "Turn off Mic" : "Turn on Mic"} />
+        <Tooltip
+          id="mic-control"
+          content={isMicOn ? "Turn off Mic" : "Turn on Mic"}
+        />
 
         <button
           className="w-14 h-14 flex items-center justify-center rounded-full bg-rose-500 hover:bg-rose-600 shadow-lg text-white transition-all duration-200"
@@ -124,11 +135,12 @@ const VideoCall = () => {
         >
           {isVidOn ? <MdVideocam size={28} /> : <MdVideocamOff size={28} />}
         </button>
-        <Tooltip id="camera-control" content={isVidOn ? "Turn off Camera" : "Turn on Camera"} />
+        <Tooltip
+          id="camera-control"
+          content={isVidOn ? "Turn off Camera" : "Turn on Camera"}
+        />
       </div>
-      
     </div>
-    
   );
 };
 

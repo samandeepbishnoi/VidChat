@@ -25,7 +25,6 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-
   title: "VidChat",
   description: "Video calling application",
 };
@@ -38,15 +37,14 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-      <head>
+        <head>
           <link rel="icon" href="/favicon1.ico" />
         </head>
         <body className={cn(inter.className, "relative")}>
           <SocketProvider>
             <main className="flex flex-col min-h-screen bg-secondary">
-              
               <NavBar></NavBar>
-              
+
               <Container>{children}</Container>
               <Footer />
             </main>

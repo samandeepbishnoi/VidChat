@@ -45,7 +45,7 @@ app.prepare().then(() => {
     //call events
     socket.on("call", onCall);
     socket.on("webrtcSignal", onWebrtcSignal);
-    socket.on("hangup" , onHangup);
+    socket.on("hangup", onHangup);
   });
 
   httpServer

@@ -66,7 +66,6 @@ const ListOnlineUsers = () => {
 
             {/* Dropdown */}
             {selectedUser === onlineUser.userId && (
-              
               <div
                 ref={dropdownRef}
                 className="absolute top-full mt-2 bg-gradient-to-b from-slate-300 to-white rounded-lg shadow-lg p-5 z-60 w-56"
@@ -85,7 +84,7 @@ const ListOnlineUsers = () => {
 
                 {/* Avatar */}
                 <div className="flex justify-center mb-3">
-                  <Avatar src={onlineUser.profile.imageUrl}  />
+                  <Avatar src={onlineUser.profile.imageUrl} />
                 </div>
 
                 {/* User Full Name */}

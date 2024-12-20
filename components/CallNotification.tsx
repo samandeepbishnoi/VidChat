@@ -7,7 +7,7 @@ import { MdCall, MdCallEnd } from "react-icons/md";
 const CallNotification = () => {
   const { ongoingCall, handleJoinCall, handleHangup } = useSocket();
 
-  //cut on refresh or tab clode 
+  //cut on refresh or tab clode
   useEffect(() => {
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
       if (ongoingCall?.isRinging) {
@@ -37,7 +37,9 @@ const CallNotification = () => {
       <div className="bg-gradient-to-b from-white to-slate-300 min-w-[300px] sm:min-w-[350px] min-h-[150px] flex flex-col items-center justify-center rounded-lg p-4 shadow-lg pointer-events-auto">
         {/* Caller Information */}
         <div className="flex flex-col items-center">
-          <Avatar src={ongoingCall.participants.caller.profile.imageUrl || ""} />
+          <Avatar
+            src={ongoingCall.participants.caller.profile.imageUrl || ""}
+          />
           <h2
             id="incoming-call-title"
             className="text-lg font-semibold mt-2 text-gray-700"
