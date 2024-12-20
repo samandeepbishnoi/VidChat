@@ -20,14 +20,16 @@ const VideoContainer = ({
     }
   }, [stream]);
 
-  return (
+  return (<div>
     <video
-      className={cn("rounded border w-[800px]" , isLocalStream && isOnCall && "w-[200px] h-auto absolute border-white border-2")}
+      className={cn("rounded border-white border-[1px] w-[800px] " , isLocalStream && isOnCall && "w-[200px] h-auto absolute border-white border-[1px] shadow-sm")}
       ref={videoRef}
       autoPlay
       playsInline
       muted={isLocalStream}
     />
+    
+    </div>
   );
 };
 
