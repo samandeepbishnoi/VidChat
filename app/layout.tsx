@@ -9,15 +9,6 @@ import SocketProvider from "@/providers/SocketProvider";
 import Footer from "@/components/layout/Footer";
 import { cn } from "@/lib/utils";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const inter = Inter({
   variable: "--font-inter", // Define custom variable for Inter font
