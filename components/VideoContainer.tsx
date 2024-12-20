@@ -24,7 +24,7 @@ const VideoContainer = ({
     <div>
       <video
         className={cn(
-          "rounded border-white border-[1px] w-[800px] ",
+          "rounded border-white border-[1px] max-w-[800px] mx-auto ",
           isLocalStream &&
             isOnCall &&
             "w-[200px] h-auto absolute border-white border-[1px] shadow-sm"

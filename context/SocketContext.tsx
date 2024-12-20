@@ -226,6 +226,10 @@ export const SocketContextProvider = ({
 
       if (!stream) {
         console.log("Could not get stream from handleJoinCall");
+        handleHangup({
+          ongoingCall: ongoingCall ? ongoingCall : undefined,
+          isEmitHangup: true,
+        })
         return;
       }
 
