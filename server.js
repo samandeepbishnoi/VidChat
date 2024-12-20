@@ -16,32 +16,32 @@ app.prepare().then(() => {
   const httpServer = createServer(handler);
 
   io = new Server(httpServer);
-  let onlineUsers= []
+  let onlineUsers = [];
 
   io.on("connection", (socket) => {
     // console.log("Client connected")
     // ...
-    socket.on('addNewUser', (clerkUser) =>{
-      clerkUser && !onlineUsers.some(user => user?.userId === clerkUser.id) &&
-      onlineUsers.push({
-        userId: clerkUser.id,
-        socketId : socket.id,
-        profile :clerkUser,
-        username: clerkUser.username,
-        status: 'online'
-      })
+    socket.on("addNewUser", (clerkUser) => {
+      clerkUser &&
+        !onlineUsers.some((user) => user?.userId === clerkUser.id) &&
+        onlineUsers.push({
+          userId: clerkUser.id,
+          socketId: socket.id,
+          profile: clerkUser,
+          username: clerkUser.username,
+          status: "online",
+        });
       //send active users
-      io.emit('getUsers' , onlineUsers)
-    })
+      io.emit("getUsers", onlineUsers);
+    });
 
-    socket.on('disconnect' , ()=>{
-      onlineUsers = onlineUsers.filter(user=> user.socketId !== socket.id)
-      io.emit('getUsers' , onlineUsers) 
-    })
+    socket.on("disconnect", () => {
+      onlineUsers = onlineUsers.filter((user) => user.socketId !== socket.id);
+      io.emit("getUsers", onlineUsers);
+    });
 
     //call events
-    socket.on('call' , onCall)
-    
+    socket.on("call", onCall);
   });
 
   httpServer

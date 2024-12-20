@@ -1,12 +1,10 @@
-"use client"
+"use client";
 
-import { SocketContextProvider } from '@/context/SocketContext'
-import React from 'react'
+import { SocketContextProvider } from "@/context/SocketContext";
+import React from "react";
 
-const SocketProvider = ({children} : {children : React.ReactNode}) => {
-  return (
-   <SocketContextProvider>{children}</SocketContextProvider>
-  )
-}
+const SocketProvider = ({ children }: { children: React.ReactNode }) => {
+  return <SocketContextProvider>{children}</SocketContextProvider>;
+};
 
-export default SocketProvider
+export default SocketProvider;

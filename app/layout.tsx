@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Inter } from "next/font/google"; 
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import NavBar from "@/components/layout/NavBar";
@@ -37,13 +37,12 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body
-          className={cn(inter.className , 'relative')}>
+        <body className={cn(inter.className, "relative")}>
           <SocketProvider>
             <main className="flex flex-col min-h-screen bg-secondary">
               <NavBar></NavBar>
               <Container>{children}</Container>
-              <Footer/>
+              <Footer />
             </main>
           </SocketProvider>
         </body>
